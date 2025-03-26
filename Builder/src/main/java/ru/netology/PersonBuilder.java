@@ -1,9 +1,11 @@
 package ru.netology;
 
+import java.util.OptionalInt;
+
 public class PersonBuilder implements IPersonBuilder {
     private String name;
     private String surname;
-    private int age = -1;
+    private OptionalInt age;
     private String city;
 
     @Override
@@ -23,7 +25,7 @@ public class PersonBuilder implements IPersonBuilder {
         if (age < 0) {
             throw new IllegalArgumentException("Возраст не может быть меньше нуля: " + age);
         }
-        this.age = age;
+        this.age = OptionalInt.of(age);
         return this;
     }
 
@@ -36,10 +38,10 @@ public class PersonBuilder implements IPersonBuilder {
     @Override
     public Person build() {
         if (name == null || name.isEmpty()) {
-            throw new IllegalArgumentException("Вы не ввели своё имя");
+            throw new IllegalStateException("Вы не ввели своё имя");
         }
         if (surname == null || surname.isEmpty()) {
-            throw new IllegalArgumentException("Вы не ввели свою фамилию");
+            throw new IllegalStateException("Вы не ввели свою фамилию");
         }
         return new Person(name, surname, age, city);
     }
