@@ -21,24 +21,24 @@ public class Main {
             int sizeList = Integer.parseInt(str);
             System.out.print("Введите верхнюю границу для значений: ");
             str = in.next();
-
             if (isNumeric(str)) {
                 int upperLimit = Integer.parseInt(str);
+
                 logger.log("Создаём и наполняем список");
                 List<Integer> list = new Random().ints(sizeList, 0, upperLimit).boxed().collect(Collectors.toList());
                 System.out.print("Вот случайный список: ");
                 list.stream().forEach(s -> System.out.print(s + " "));
                 System.out.println();
-                logger.log("Просим пользователя ввести входные данные для фильтрации");
 
+                logger.log("Просим пользователя ввести входные данные для фильтрации");
                 System.out.print("Введите порог для фильтра: ");
                 str = in.next();
-
                 if (isNumeric(str)) {
                     int f = Integer.parseInt(str);
+
                     logger.log("Запускаем фильтрацию");
-                    Filter filter = new Filter(f);
-                    list = filter.filterOut(list);
+                    list = new Filter(f).filterOut(list);
+
                     logger.log("Выводим результат на экран");
                     System.out.print("Отфильтрованный список: ");
                     list.stream().forEach(s -> System.out.print(s + " "));

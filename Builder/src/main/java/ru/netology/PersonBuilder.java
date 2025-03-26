@@ -1,6 +1,6 @@
 package ru.netology;
 
-public class PersonBuilder implements IPersonBuilder{
+public class PersonBuilder implements IPersonBuilder {
     private String name;
     private String surname;
     private int age = -1;
@@ -35,6 +35,12 @@ public class PersonBuilder implements IPersonBuilder{
 
     @Override
     public Person build() {
+        if (name == null || name.isEmpty()) {
+            throw new IllegalArgumentException("Вы не ввели своё имя");
+        }
+        if (surname == null || surname.isEmpty()) {
+            throw new IllegalArgumentException("Вы не ввели свою фамилию");
+        }
         return new Person(name, surname, age, city);
     }
 }

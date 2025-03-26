@@ -15,9 +15,9 @@ import java.time.LocalDateTime;
 //    }
 //}
 
-public class Logger implements ILogger{
+public class Logger implements ILogger {
     private static Logger logger;
-    protected int num = 1;
+    private int num = 1;
 
     private Logger() {
     }
