@@ -1,5 +1,6 @@
 package ru.netology;
 
+import java.util.Optional;
 import java.util.OptionalInt;
 
 public class PersonBuilder implements IPersonBuilder {
@@ -37,12 +38,14 @@ public class PersonBuilder implements IPersonBuilder {
 
     @Override
     public Person build() {
-        if (name == null || name.isEmpty()) {
-            throw new IllegalStateException("Вы не ввели своё имя");
-        }
-        if (surname == null || surname.isEmpty()) {
-            throw new IllegalStateException("Вы не ввели свою фамилию");
-        }
+//        if (name == null || name.isEmpty()) {
+//            throw new IllegalStateException("Вы не ввели своё имя");
+//        }
+//        if (surname == null || surname.isEmpty()) {
+//            throw new IllegalStateException("Вы не ввели свою фамилию");
+//        }
+        //Optional.ofNullable(name).orElseThrow(() -> new IllegalStateException("Вы не ввели своё имя"));
+        //Optional.ofNullable(surname).orElseThrow(() -> new IllegalStateException("Вы не ввели свою фамилию"));
         return new Person(name, surname, age < 0 ? OptionalInt.empty() : OptionalInt.of(age), city);
     }
 }
