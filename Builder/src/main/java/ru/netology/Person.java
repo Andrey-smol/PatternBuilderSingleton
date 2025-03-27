@@ -1,5 +1,6 @@
 package ru.netology;
 
+import java.util.Objects;
 import java.util.Optional;
 import java.util.OptionalInt;
 
@@ -68,7 +69,8 @@ public class Person {
 
     @Override
     public int hashCode() {
-        return name.hashCode() + surname.hashCode();
+        return Objects.hash(name, surname);
+        //return name.hashCode() + surname.hashCode();
     }
 
     @Override
