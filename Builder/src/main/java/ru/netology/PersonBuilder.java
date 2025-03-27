@@ -5,7 +5,7 @@ import java.util.OptionalInt;
 public class PersonBuilder implements IPersonBuilder {
     private String name;
     private String surname;
-    private OptionalInt age;
+    private int age = -1;
     private String city;
 
     @Override
@@ -25,7 +25,7 @@ public class PersonBuilder implements IPersonBuilder {
         if (age < 0) {
             throw new IllegalArgumentException("Возраст не может быть меньше нуля: " + age);
         }
-        this.age = OptionalInt.of(age);
+        this.age = age;
         return this;
     }
 
@@ -43,6 +43,6 @@ public class PersonBuilder implements IPersonBuilder {
         if (surname == null || surname.isEmpty()) {
             throw new IllegalStateException("Вы не ввели свою фамилию");
         }
-        return new Person(name, surname, age, city);
+        return new Person(name, surname, age < 0 ? OptionalInt.empty() : OptionalInt.of(age), city);
     }
 }
